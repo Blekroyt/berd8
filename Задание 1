@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import json
 
 if __name__ == '__main__':
     # Функции
@@ -35,7 +36,7 @@ if __name__ == '__main__':
              '| {:^30} | {:^20} | {:^14} |'.format(
                  "Фамилия, Имя",
                  "Номер телефона",
-                 "Дата рождения",
+                 "Дата рождения"
              )
          )
          print(line)
@@ -78,6 +79,20 @@ if __name__ == '__main__':
         print("help - отобразить справку;")
         print("exit - завершить работу с программой.")
 
+    def load():
+        # Разбить команду на части для выделения имени файла.
+        parts = command.split(' ', maxsplit=1)
+        # Прочитать данные из файла JSON.
+        with open(parts[1], 'r') as f:
+            station = json.load(f)
+
+
+    def save():
+        # Разбить команду на части для выделения имени файла.
+        parts = command.split(' ', maxsplit=1)
+        # Сохранить данные в файл JSON.
+        with open(parts[1], 'w') as f:
+            json.dump(spisoks, f)
 
     # Список .
     spisoks = []
