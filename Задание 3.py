@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- кодировка: utf-8 -*-
 import math
-import 
+import sys
 
 def getInput():
     return input()
