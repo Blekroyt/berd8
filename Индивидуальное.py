@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-# -*- кодировка: utf-8 -*-
-import math
-import sys
+# -*- coding: utf-8 -*-
 
-import json
+import sys
 
 if __name__ == '__main__':
     # Функции
@@ -25,7 +23,7 @@ if __name__ == '__main__':
         if len(spisok) > 1:
             spisoks.sort(key=lambda item: item.get('tel', ''))
 
-     def list():
+    def list():
          # Заголовок таблицы.
          line = '+-{}-+-{}-+-{}-+'.format(
              '-' * 30,
@@ -37,7 +35,7 @@ if __name__ == '__main__':
              '| {:^30} | {:^20} | {:^14} |'.format(
                  "Фамилия, Имя",
                  "Номер телефона",
-                 "Дата рождения"
+                 "Дата рождения",
              )
          )
          print(line)
@@ -80,20 +78,6 @@ if __name__ == '__main__':
         print("help - отобразить справку;")
         print("exit - завершить работу с программой.")
 
-    def load():
-        # Разбить команду на части для выделения имени файла.
-        parts = command.split(' ', maxsplit=1)
-        # Прочитать данные из файла JSON.
-        with open(parts[1], 'r') as f:
-            station = json.load(f)
-
-
-    def save():
-        # Разбить команду на части для выделения имени файла.
-        parts = command.split(' ', maxsplit=1)
-        # Сохранить данные в файл JSON.
-        with open(parts[1], 'w') as f:
-            json.dump(spisoks, f)
 
     # Список .
     spisoks = []
@@ -107,16 +91,16 @@ if __name__ == '__main__':
         if command == 'exit':
             break
 
-         elif command == 'add':
+        elif command == 'add':
             add()
 
-         elif command == 'list':
+        elif command == 'list':
             list()
 
         elif command.startswith('select '):
             select()
 
-         elif command == 'help':
+        elif command == 'help':
            help()
         else:
             print("Неизвестная команда {command}", file=sys.stderr)
