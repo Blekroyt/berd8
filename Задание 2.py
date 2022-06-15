@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 # -*- кодировка: utf-8 -*-
 import math
-import sys
 
-def cylinder(r, h):
-from math import pi
-def circle(r): return pi*r**2
-s = 2*pi*r*h
-if input('Full area? [y/n]: ') == 'y': \
-s += 2*circle(r)
-return s
+def cylinder():
+    r = float(input("Enter radius: "))
+    h = float(input("Enter hight: "))
+    # площадь боковой поверхности цилиндра:
+    side = 2 * 3.14 * r * h
+    # площадь одного основания цилиндра:
+    circle = 3.14 * r**2
+    # полная площадь цилиндра:
+    full = side + 2 * circle
+    return full or side
 
-r, h = 1, 1
-print('s =', cylinder(r, h))
+square = cylinder()
+print(square)
