@@ -1,95 +1,91 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 import sys
-import json
 
 if __name__ == '__main__':
-    # Функции:
+    # Функции
     def add():
-        name = input("Фамилия и имя? ")
-        zod = input("Знак Зодиака? ")
-        birth = input("Дата рождения? ")
+        # Запросить данные .
+        name = input("Фамилия, Имя ")
+        tel = input("Номер телефона ")
+        date = input("Дата рождения ")
 
-        # Создать словарь:
-        people = {
+        # Создать словарь.
+        spisok = {
             'name': name,
-            'zod': zod,
-            'birth': birth,
-        }
+            'tel': tel,
+            'date': date}
 
-        # Добавить словарь в список:
-        peoples.append(people)
+        # Добавить словарь в список.
+        spisoks.append(spisok)
         # Отсортировать список в случае необходимости.
-        if len(peoples) > 1:
-            peoples.sort(key=lambda item: item.get('birth', ''))
-
+        if len(spisok) > 1:
+            spisoks.sort(key=lambda item: item.get('tel', ''))
 
     def list():
-        # Заголовок таблицы.
-        line = '+-{}-+-{}-+-{}-+-{}-+'.format(
-            '-' * 4,
-            '-' * 30,
-            '-' * 20,
-            '-' * 15
-        )
-        print(line)
-        print(
-            '| {:^4} | {:^30} | {:^20} | {:^15} |'.format(
-                "№",
-                "Фамилия и имя",
-                "Знак Зодиака",
-                "Дата рождения"
-            )
-        )
-        print(line)
+         # Заголовок таблицы.
+         line = '+-{}-+-{}-+-{}-+'.format(
+             '-' * 30,
+             '-' * 20,
+             '-' * 14
+         )
+         print(line)
+         print(
+             '| {:^30} | {:^20} | {:^14} |'.format(
+                 "Фамилия, Имя",
+                 "Номер телефона",
+                 "Дата рождения",
+             )
+         )
+         print(line)
 
-        # Вывести данные о всех людях:
-        for idx, people in enumerate(peoples, 1):
-            print(
-                '| {:>4} | {:<30} | {:<20} | {:>15} |'.format(
-                    idx,
-                    people.get('name', ''),
-                    people.get('zod', ''),
-                    people.get('birth', 0)
-                )
-            )
+         # Вывести данные о всех людях.
+         for idx, product in enumerate(spisoks, 1):
+             print(
+                 '| {:<30} | {:<20} | {:>14} |'.format(
+                     product.get('name', ''),
+                     product.get('tel', ''),
+                     product.get('date', 0)
+                 )
+             )
 
-        print(line)
-
-
+         print(line)
     def select():
         parts = command.split(' ', maxsplit=2)
         sel = (parts[1])
 
         count = 0
-        for people in peoples:
-            if people.get('zod') == sel:
-                count = "Знак Зодиака"
-                print('{:>4}: {}'.format(count, people.get('zod', ''))
+        for spisok in spisoks:
+            if spisok.get('name') == sel:
+                count = "Дата рождения"
+                print(
+                    '{:>4}: {}'.format(count, spisok.get('date', ''))
                 )
-                print('Фамилия и имя:', peoples.get('name', ''))
-                print('Дата рождения:', peoples.get('birth', ''))
+                print('Номер телефона', spisok.get('tel', ''))
+                print('Фамилия Имя', spisok.get('name', ''))
 
+        # Если счетчик равен 0, то рейсы не найдены.
         if count == 0:
-            print("Люди с данным знаком Зодиака не найдены.")
-
+            print("Люди не найден.")
 
     def help():
         # Вывести справку о работе с программой.
         print("Список команд:\n")
         print("add - добавить человека;")
         print("list - вывести список людей;")
-        print("select <знак зодиака> - запросить людей с знаком Зодиака;")
+        print("select <товар> - информация о человеке;")
         print("help - отобразить справку;")
         print("exit - завершить работу с программой.")
 
-    # Список людей.
-    peoples = []
+
+    # Список .
+    spisoks = []
 
     # Организовать бесконечный цикл запроса команд.
     while True:
         # Запросить команду из терминала.
-        command = input(">>> ", ).lower()
+        command = input(">>>>>>",).lower()
 
         # Выполнить действие в соответствие с командой.
         if command == 'exit':
@@ -97,7 +93,6 @@ if __name__ == '__main__':
 
         elif command == 'add':
             add()
-
         elif command == 'list':
             list()
 
@@ -105,6 +100,6 @@ if __name__ == '__main__':
             select()
 
         elif command == 'help':
-            help()
+           help()
         else:
             print("Неизвестная команда {command}", file=sys.stderr)
